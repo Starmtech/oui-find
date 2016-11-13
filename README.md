@@ -20,15 +20,15 @@ make install
 
 Lancement du script:
 
-Recherche du constructeur d'une adresse-mac.
+Recherche du constructeur d'une adresse-mac:
 python oui-find.py -m addressemac
 
-Recherche des adresses mac correspondant a un constructeur.
+Recherche des adresses mac correspondant a un constructeur:
 python oui-find.py -c constructeur
 
-Mise a jours de la base de donnée. 
+Mise a jours de la base de donnée:
 python oui-find.py -u
 
-Plus d'information sur le script.
+Plus d'information sur le script:
 python oui-find.py -h
 
