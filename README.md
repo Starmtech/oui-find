@@ -1,5 +1,7 @@
 # oui-find
 
+Version: 
+Python 2.7
 
 Dépendance:
 Sqlite3
