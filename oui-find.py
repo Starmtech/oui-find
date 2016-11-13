@@ -1,5 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+###################################
+#           OuiFInd               #
+#      langage : Python 2.7       # 
+#         date : 13/11/16         #
+#          version : 1.0          #
+#        auteur : devkort         #
+###################################
 
 import sqlite3
 import os
@@ -17,9 +24,9 @@ def search(l, value):
 
        elif value == '-c':
           cursor.execute(" SELECT * FROM oui WHERE constructeur like ?", ('%' + l + '%', )) 
-       print coloriage(" MAC  :  Constructeur", 'blue', True)
+       print coloriage(" MAC   :  Constructeur", 'blue', True)
        for row in cursor:
-          print coloriage('{1}: {2}'.format(row[0], row[1], row[2]), 'green', False)
+          print coloriage('{1} : {2}'.format(row[0], row[1], row[2]), 'green', False)
 
        conn.commit()
    except Exception as e:
@@ -40,17 +47,17 @@ def coloriage(s, color, bold=False):
 
 def help():
    print("\n")
-   print("                    Aide pour l'utilisation du script:")
+   print coloriage("                    Aide pour l'utilisation du script:", "blue", True)
    print("\n")
-   print(" oui-find.py -m    permet de chercher le constructeur a qui appartient l'adresse mac")
-   print(" oui-find.py -c   permet d'afficher les adresses mac correspondant on constructeur")
-   print(" oui-find.py -h     permet de connaitre les commandes du script et obtenir de l'aide")
+   print coloriage(" oui-find.py -m    permet de chercher le constructeur a qui appartient l'adresse mac", "green", False)
+   print coloriage(" oui-find.py -c   permet d'afficher les adresses mac correspondant on constructeur", "green", False)
+   print coloriage(" oui-find.py -h     permet de connaitre les commandes du script et obtenir de l'aide", "green", False)
    print("\n")
 
 
 
 def argu():
-   if len(sys.argv) > 2:
+   if len(sys.argv) >= 1:
       if sys.argv[1] == "-m":
          if len(sys.argv) == 3:
             vendors = sys.argv[2]
@@ -70,8 +77,10 @@ def argu():
             vendors = raw_input("Entrez un constructeur : ")
             arg = sys.argv[1]
             search(vendors, arg)
+
       elif sys.argv[1] == "-h":
          help()
+
       elif sys.argv[1] == "-u":
          oui2.play()
    else:
