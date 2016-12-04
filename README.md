@@ -23,14 +23,21 @@ make install
 Lancement du script:
 
 Recherche du constructeur d'une adresse-mac:
-python oui-find.py -m addressemac
+python ouifind.py -m addressemac
 
 Recherche des adresses mac correspondant a un constructeur:
-python oui-find.py -c constructeur
+python ouifind.py -c constructeur
 
 Mise a jours de la base de donnée:
-python oui-find.py -u
+python ouifind.py -u
 
 Plus d'information sur le script:
-python oui-find.py -h
+python ouifind.py -h
+
+Installation de ouifind.deb
+Ubuntu :
+sudo dpkg -i ouifind.deb
+
+Debian:
+dpkg -i ouifind.deb
 
