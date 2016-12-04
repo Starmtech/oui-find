@@ -3,19 +3,19 @@
 ###################################
 #           OuiFInd               #
 #      langage : Python 2.7       # 
-#         date : 13/11/16         #
-#          version : 1.0          #
+#         date : 25/11/16         #
+#          version : 1.1          #
 #        auteur : devkort         #
 ###################################
 
 import sqlite3
 import os
 import sys
-import oui2
+import urllib
 
 def search(l, value):
    try:
-       conn = sqlite3.connect('oui.db')
+       conn = sqlite3.connect('/usr/share/ouifind/src/oui.db')
        cursor = conn.cursor()
        if value == '-m':
           t = l.replace(':','')
@@ -47,14 +47,22 @@ def coloriage(s, color, bold=False):
 
 def help():
    print("\n")
-   print coloriage("                    Aide pour l'utilisation du script:", "blue", True)
+   print coloriage("                    Aide pour l'utilisation de la commande OuiFind:", "blue", True)
    print("\n")
-   print coloriage(" oui-find.py -m    permet de chercher le constructeur a qui appartient l'adresse mac", "green", False)
-   print coloriage(" oui-find.py -c   permet d'afficher les adresses mac correspondant on constructeur", "green", False)
-   print coloriage(" oui-find.py -h     permet de connaitre les commandes du script et obtenir de l'aide", "green", False)
+   print coloriage(" ouifind.py -m    permet de chercher le constructeur a qui appartient l'adresse mac", "green", False)
+   print coloriage(" ouifind.py -c   permet d'afficher les adresses mac correspondant on constructeur", "green", False)
+   print coloriage(" ouifind.py -h     permet de connaitre les commandes du script et obtenir de l'aide", "green", False)
+   print coloriage(" ouifind.py -u     mise a jours de la base de donnée", "green", False)
    print("\n")
 
-
+def update():
+   try:   
+      print coloriage("Mise a jours de la base de donnée", "green", False)
+      urllib.urlretrieve('http://88.164.14.125/oui.db', '/usr/share/ouifind/src/oui.db')
+      print coloriage("Base de donnée mise a jours.", "green", False)
+   except:
+      print coloriage("Mise a jours Impossible", "red", False)  
+      pass
 
 def argu():
    if len(sys.argv) >= 1:
@@ -82,9 +90,9 @@ def argu():
          help()
 
       elif sys.argv[1] == "-u":
-         oui2.play()
-   else:
-      print("Mauvaise commande taper --help pour plus d'information")
+         update()
+      else:
+         print("Mauvaise commande taper --help pour plus d'information")
 
 
 if __name__ == '__main__':
