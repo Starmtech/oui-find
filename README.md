@@ -38,7 +38,8 @@ Installation de ouifind.deb
 
 Ubuntu :
 sudo dpkg -i ouifind.deb
+sudo ouifind -u
 
 Debian:
 dpkg -i ouifind.deb
-
+ ouifind -u
