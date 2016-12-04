@@ -4,7 +4,7 @@ Version:
 Python 2.7
 
 Dépendance:
-Sqlite3
+Sqlite3 , Python
 
 Ubuntu / Debian:
 sudo apt-get install sqlite3
