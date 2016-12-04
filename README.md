@@ -35,6 +35,7 @@ Plus d'information sur le script:
 python ouifind.py -h
 
 Installation de ouifind.deb
+
 Ubuntu :
 sudo dpkg -i ouifind.deb
 
